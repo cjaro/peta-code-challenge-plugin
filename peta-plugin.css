@@ -1,9 +1,15 @@
-.peta-plugin-options{
-  display: flex;
-  flex-direction: row;
-}
 .peta-plugin-options li{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center
+}
+.pp-post-li{
+  border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+  margin: 3px;
+  padding: 3px;
+}
+.pp-date-div, .pp-post-li a, .pp-btns-div{
+  width: 33%;
 }

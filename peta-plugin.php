@@ -22,7 +22,7 @@
 }
 .pp-post-li{
   border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   margin: 3px;
   padding: 3px;
 }
@@ -39,10 +39,13 @@ add_action( 'wp_enqueue_scripts', 'register_petaplugin_styles' );
 /**
  * Register style sheet.
  */
-function register_petaplugin_styles() {
+function petaplugin_register_plugin_styles() {
 	wp_register_style( 'peta-plugin', plugins_url( 'peta-plugin/peta-plugin.css' ) );
 	wp_enqueue_style( 'peta-plugin' );
 }
+
+// Register style sheet.
+add_action( 'wp_enqueue_scripts', 'petaplugin_register_plugin_styles' );
 
 /*
 * Adding widget to dashboard
@@ -64,13 +67,13 @@ function petaplugin_dashboard_widget_function() {
 
 	// Display posts by logged in user.
   $user = wp_get_current_user();
-    echo "Hello <strong>" . $user->user_firstname . " " . $user->user_lastname . "</strong>, this is the PETA code challenge custom widget (this is where the gathered posts will go). You can, for instance, list all the posts you've published:<br><br>";
+    echo "Hello <strong>" . $user->user_firstname . " " . $user->user_lastname . "</strong>, this is the PETA code challenge custom widget.";
 
     /*
     * WP REST API tinkering
     */
     // Get the JSON
-    // I'm using this https://v2.wp-api.org/reference/posts/ and I think that if I keep picking away it'll come aorund. I think using the 'status' and 'date' params will produce the best path forward. 
+    // I'm using this https://v2.wp-api.org/reference/posts/ and I think that if I keep picking away it'll come aorund. I think using the 'status' and 'date' params will produce the best path forward.
 
     $posts1 = json_decode(file_get_contents('http://www.brandpoint.com/wp-json/wp/v2/posts?filter[posts_per_page]=10&filter[orderby]=date'));
     echo "Posts from Site 1 (" . $posts1->id . "):<br>";
