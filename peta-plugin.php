@@ -70,23 +70,33 @@ function petaplugin_dashboard_widget_function() {
     * WP REST API tinkering
     */
     // Get the JSON
+    // I'm using this https://v2.wp-api.org/reference/posts/ and I think that if I keep picking away it'll come aorund. I think using the 'status' and 'date' params will produce the best path forward. 
 
     $posts1 = json_decode(file_get_contents('http://www.brandpoint.com/wp-json/wp/v2/posts?filter[posts_per_page]=10&filter[orderby]=date'));
     echo "Posts from Site 1 (" . $posts1->id . "):<br>";
     foreach ( $posts1 as $post1 ) {
-      echo '<a href="'.$post1->link.'">'.$post1->title->rendered.'</a>' . '<br>';
+      echo '<a href="'.$post1->link.'">'.$post1->title->rendered.'</a>' . '<div class="pp-btns-div">
+        <button class="pp-btn-appr">Approve</button>
+        <button class="pp-btn-deny">Deny</button>
+        </div>' . '<br>';
     }
     echo "<br><br>";
     $posts2 = json_decode(file_get_contents('http://www.aimclearblog.com/wp-json/wp/v2/posts?filter[posts_per_page]=10&filter[orderby]=date'));
   echo "Posts from Site 2 (" . $posts2->id . "):<br>";
     foreach ( $posts2 as $post2 ) {
-      echo '<a href="'.$post2->link.'">'.$post2->title->rendered.'</a>' . '<br>';
+      echo '<a href="'.$post2->link.'">'.$post2->title->rendered.'</a>' . '<div class="pp-btns-div">
+        <button class="pp-btn-appr">Approve</button>
+        <button class="pp-btn-deny">Deny</button>
+        </div>' . '<br>';
     }
     echo "<br><br>";
     $posts3 = json_decode(file_get_contents('http://www.diedrichrpm.com/wp-json/wp/v2/posts?filter[posts_per_page]=10&filter[orderby]=date'));
   echo "Posts from Site 3 (" . $posts3->id . "):<br>";
     foreach ( $posts3 as $post3 ) {
-      echo '<a href="'.$post3->link.'">'.$post3->title->rendered.'</a>' . '<br>';
+      echo '<a href="'.$post3->link.'">'.$post3->title->rendered.'</a>' . '<div class="pp-btns-div">
+        <button class="pp-btn-appr">Approve</button>
+        <button class="pp-btn-deny">Deny</button>
+        </div>' . '<br>';
     }
   //   $json = file_get_contents('https://www.brandpoint.com/wp-json/wp/v2/posts');
   //   // Convert the JSON to an array of posts
