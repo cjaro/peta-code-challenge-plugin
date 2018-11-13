@@ -1,0 +1,9 @@
+.peta-plugin-options{
+  display: flex;
+  flex-direction: row;
+}
+.peta-plugin-options li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
