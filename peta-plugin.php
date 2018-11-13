@@ -67,7 +67,7 @@ function petaplugin_dashboard_widget_function() {
 
 	// Display posts by logged in user.
   $user = wp_get_current_user();
-    echo "Hello <strong>" . $user->user_firstname . " " . $user->user_lastname . "</strong>, this is the PETA code challenge custom widget.";
+    echo "Hello <strong>" . $user->user_firstname . " " . $user->user_lastname . "</strong>, this is the PETA code challenge custom widget.<br><br>";
 
     /*
     * WP REST API tinkering
@@ -85,7 +85,7 @@ function petaplugin_dashboard_widget_function() {
     }
     echo "<br><br>";
     $posts2 = json_decode(file_get_contents('http://www.aimclearblog.com/wp-json/wp/v2/posts?filter[posts_per_page]=10&filter[orderby]=date'));
-
+    echo "Posts from Site 2 (" . $posts2->id . "):<br>";
     foreach ( $posts2 as $post2 ) {
       echo '<a href="'.$post2->link.'">'.$post2->title->rendered.'</a>' . '<div class="pp-btns-div">
         <button class="pp-btn-appr">Approve</button>
