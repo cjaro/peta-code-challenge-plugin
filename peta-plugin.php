@@ -109,4 +109,17 @@ function peta_plugin_options() {
 	echo '<p>' . petaplugin_dashboard_widget_function() . '</p>';
 	echo '</div>';
 }
+
+/*
+* RSS Work
+*/
+add_action('init', 'petaPluginRSS');
+function petaPluginRSS(){
+        add_feed('feedname', 'petapluginRSSFunc');
+        global $wp_rewrite;
+$wp_rewrite->flush_rules();
+}
+function petapluginRSSFunc(){
+        get_template_part('rss', 'feedname');
+}
 ?>
